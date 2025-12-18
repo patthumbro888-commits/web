@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orion Global - POS Systems & Digital Marketing</title>
+    <title>ORION GLOBAL - Advanced Digital Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -11,283 +12,509 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #1a1a1a;
+            --card-bg: #151515;
+            --accent-cyan: #00f0ff;
+            --accent-purple: #b000ff;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --border-color: #2a2a2a;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
             overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
         }
 
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 30px rgba(0, 240, 255, 0.1);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 3rem;
+            position: relative;
+            z-index: 1;
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            letter-spacing: 1px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 3rem;
         }
 
         .nav-links a {
-            color: white;
+            color: var(--text-primary);
             text-decoration: none;
-            transition: opacity 0.3s;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .nav-links a:hover {
-            opacity: 0.8;
+            color: var(--accent-cyan);
         }
 
         .menu-toggle {
             display: none;
             background: none;
-            border: none;
-            color: white;
+            border: 2px solid var(--accent-cyan);
+            color: var(--accent-cyan);
             font-size: 1.5rem;
             cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
         }
 
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 150px 2rem 100px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0 2rem;
+            margin-top: 80px;
+        }
+
+        .hero-content {
             text-align: center;
-            margin-top: 60px;
+            z-index: 2;
+            max-width: 1000px;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
             margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
+            background: linear-gradient(135deg, #ffffff, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glowText 3s ease-in-out infinite;
+            letter-spacing: 2px;
         }
 
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            animation: fadeInUp 1s ease 0.2s both;
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            color: var(--accent-cyan);
+            margin-bottom: 3rem;
+            font-weight: 500;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .cta-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: white;
-            color: #667eea;
-            text-decoration: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border: none;
             border-radius: 50px;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: fadeInUp 1s ease 0.4s both;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Rajdhani', sans-serif;
+            text-decoration: none;
+            display: inline-block;
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        .cta-primary {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            color: var(--primary-bg);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
         }
 
-        .services {
-            padding: 80px 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+        .cta-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.6);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--accent-cyan);
+        }
+
+        .cta-secondary:hover {
+            background: var(--accent-cyan);
+            color: var(--primary-bg);
+            transform: translateY(-5px);
+        }
+
+        .section {
+            padding: 120px 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
         }
 
         .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
             cursor: pointer;
         }
 
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(176, 0, 255, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transform: translateY(-15px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 20px 60px rgba(0, 240, 255, 0.3);
         }
 
         .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            filter: drop-shadow(0 0 20px currentColor);
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
-            color: #667eea;
+            color: var(--accent-cyan);
+            position: relative;
+            z-index: 1;
         }
 
         .service-card p {
-            color: #666;
+            color: var(--text-secondary);
             line-height: 1.8;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
         }
 
-        .about {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 80px 2rem;
+        .service-card .learn-more {
+            margin-top: 1.5rem;
+            color: var(--accent-purple);
+            font-weight: 700;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
         }
 
-        .about-content {
+        .features-section {
+            background: var(--secondary-bg);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-box {
+            text-align: center;
+            padding: 2.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .feature-box:hover {
+            border-color: var(--accent-cyan);
+            transform: scale(1.05);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-box h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(176, 0, 255, 0.05));
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
             max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: #333;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 1rem;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
         }
 
         .stat-box {
             text-align: center;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            padding: 2rem;
         }
 
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #667eea;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             display: block;
+            margin-bottom: 0.5rem;
         }
 
         .stat-label {
-            color: #666;
-            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 1px;
         }
 
-        .contact {
-            padding: 80px 2rem;
-            max-width: 800px;
+        .contact-section {
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .contact-form {
-            background: white;
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 4rem;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            color: #333;
-            font-weight: 500;
+            margin-bottom: 0.8rem;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            background: var(--secondary-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-primary);
             font-size: 1rem;
-            transition: border-color 0.3s;
+            font-family: 'Rajdhani', sans-serif;
+            transition: all 0.3s;
         }
 
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
         }
 
         .form-group textarea {
             resize: vertical;
-            min-height: 120px;
+            min-height: 150px;
         }
 
         .submit-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 3rem;
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            color: var(--primary-bg);
             border: none;
             border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            width: 100%;
+            transition: all 0.3s;
+            font-family: 'Orbitron', sans-serif;
         }
 
         .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 240, 255, 0.5);
         }
 
         footer {
-            background: #2c3e50;
-            color: white;
+            background: var(--primary-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem;
             text-align: center;
-            padding: 2rem;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @keyframes glowText {
+            0%, 100% {
+                filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.5));
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            50% {
+                filter: drop-shadow(0 0 40px rgba(176, 0, 255, 0.8));
             }
         }
 
@@ -301,11 +528,12 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: #667eea;
+                background: rgba(10, 10, 10, 0.98);
                 flex-direction: column;
-                padding: 1rem;
-                gap: 1rem;
+                padding: 2rem;
+                gap: 1.5rem;
                 display: none;
+                border-top: 1px solid var(--border-color);
             }
 
             .nav-links.active {
@@ -313,126 +541,214 @@
             }
 
             .hero h1 {
-                font-size: 2rem;
+                font-size: 3rem;
             }
 
-            .hero p {
-                font-size: 1.1rem;
+            .hero .subtitle {
+                font-size: 1.2rem;
             }
 
-            .about-content {
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .form-row {
                 grid-template-columns: 1fr;
             }
 
-            .stats {
-                grid-template-columns: 1fr;
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                padding: 0 1.5rem;
             }
         }
     </style>
 </head>
 <body>
+    <div class="grid-bg"></div>
+
     <header>
         <nav>
             <div class="logo">ORION GLOBAL</div>
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#services">SERVICES</a></li>
+                <li><a href="#features">FEATURES</a></li>
+                <li><a href="#stats">STATS</a></li>
+                <li><a href="#contact">CONTACT</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero" id="home">
-        <h1>Elevate Your Business Digital Presence</h1>
-        <p>Cutting-edge POS Systems, Creative Content & Digital Marketing Solutions</p>
-        <a href="#contact" class="cta-button">Get Started Today</a>
+        <div class="hero-content">
+            <h1>ORION GLOBAL</h1>
+            <p class="subtitle">NEXT-GENERATION DIGITAL SOLUTIONS</p>
+            <p class="tagline">// Redefining Business Technology //</p>
+            <div class="cta-buttons">
+                <a href="#services" class="cta-button cta-primary">EXPLORE SERVICES</a>
+                <a href="#contact" class="cta-button cta-secondary">CONTACT US</a>
+            </div>
+        </div>
     </section>
 
-    <section class="services" id="services">
-        <h2 class="section-title">Our Services</h2>
+    <section class="section" id="services">
+        <div class="section-header">
+            <h2 class="section-title">OUR SERVICES</h2>
+            <p class="section-subtitle">Cutting-edge solutions powered by advanced technology and creative excellence</p>
+        </div>
         <div class="services-grid">
             <div class="service-card">
-                <div class="service-icon">💳</div>
-                <h3>POS Systems</h3>
-                <p>Advanced point-of-sale solutions designed to streamline your transactions, manage inventory, and provide real-time business insights. Our systems are reliable, secure, and easy to use.</p>
+                <span class="service-icon">🖥️</span>
+                <h3>POS SYSTEMS</h3>
+                <p>Revolutionary point-of-sale solutions with AI-powered analytics, real-time inventory tracking, cloud synchronization, and multi-platform compatibility. Designed for maximum efficiency and minimal downtime.</p>
+                <span class="learn-more">→ LEARN MORE</span>
             </div>
             <div class="service-card">
-                <div class="service-icon">✨</div>
-                <h3>Content Creation</h3>
-                <p>Engaging, high-quality content that tells your brand story. From blog posts to video content, we create material that resonates with your audience and drives engagement.</p>
+                <span class="service-icon">✨</span>
+                <h3>CONTENT CREATION</h3>
+                <p>Professional multimedia content production including video editing, motion graphics, 3D animations, podcast production, and interactive media. We craft narratives that captivate and convert.</p>
+                <span class="learn-more">→ LEARN MORE</span>
             </div>
             <div class="service-card">
-                <div class="service-icon">🎨</div>
-                <h3>Post Designing</h3>
-                <p>Eye-catching social media posts and graphics that capture attention. Our designs are tailored to your brand identity and optimized for maximum impact across all platforms.</p>
+                <span class="service-icon">🎨</span>
+                <h3>POST DESIGNING</h3>
+                <p>Stunning visual designs optimized for all social media platforms. From static posts to animated stories, carousels, and reels. Brand-consistent designs that stop the scroll and drive engagement.</p>
+                <span class="learn-more">→ LEARN MORE</span>
             </div>
             <div class="service-card">
-                <div class="service-icon">📈</div>
-                <h3>Digital Marketing</h3>
-                <p>Comprehensive digital marketing strategies including SEO, social media marketing, email campaigns, and paid advertising to grow your online presence and drive results.</p>
+                <span class="service-icon">📊</span>
+                <h3>DIGITAL MARKETING</h3>
+                <p>Full-spectrum digital marketing including SEO optimization, PPC campaigns, social media management, email automation, influencer partnerships, and data-driven strategy development.</p>
+                <span class="learn-more">→ LEARN MORE</span>
             </div>
         </div>
     </section>
 
-    <section class="about" id="about">
-        <div class="about-content">
-            <div class="about-text">
-                <h2>About Orion Global</h2>
-                <p>We are a dynamic technology and marketing company dedicated to empowering businesses with innovative solutions. With years of experience in the industry, we understand what it takes to succeed in today's digital landscape.</p>
-                <p>Our team of experts combines technical expertise with creative excellence to deliver solutions that not only meet but exceed expectations. We're committed to helping your business thrive.</p>
-                <div class="stats">
-                    <div class="stat-box">
-                        <span class="stat-number">500+</span>
-                        <span class="stat-label">Happy Clients</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="stat-number">1000+</span>
-                        <span class="stat-label">Projects Completed</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="stat-number">24/7</span>
-                        <span class="stat-label">Support Available</span>
-                    </div>
+    <section class="section features-section" id="features">
+        <div class="section-header">
+            <h2 class="section-title">ADVANCED FEATURES</h2>
+            <p class="section-subtitle">Technology-driven capabilities that give you the competitive edge</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-box">
+                <span class="feature-icon">⚡</span>
+                <h4>LIGHTNING FAST</h4>
+                <p>Optimized performance</p>
+            </div>
+            <div class="feature-box">
+                <span class="feature-icon">🔒</span>
+                <h4>SECURE</h4>
+                <p>Bank-level encryption</p>
+            </div>
+            <div class="feature-box">
+                <span class="feature-icon">☁️</span>
+                <h4>CLOUD-BASED</h4>
+                <p>Access anywhere</p>
+            </div>
+            <div class="feature-box">
+                <span class="feature-icon">🤖</span>
+                <h4>AI-POWERED</h4>
+                <p>Smart automation</p>
+            </div>
+            <div class="feature-box">
+                <span class="feature-icon">📱</span>
+                <h4>RESPONSIVE</h4>
+                <p>All devices supported</p>
+            </div>
+            <div class="feature-box">
+                <span class="feature-icon">🔄</span>
+                <h4>REAL-TIME SYNC</h4>
+                <p>Instant updates</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section stats-section" id="stats">
+        <div class="section-header">
+            <h2 class="section-title">PROVEN RESULTS</h2>
+            <p class="section-subtitle">Numbers that speak to our commitment and excellence</p>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-box">
+                <span class="stat-number">850+</span>
+                <span class="stat-label">ACTIVE CLIENTS</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">2.5K+</span>
+                <span class="stat-label">PROJECTS DEPLOYED</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">98%</span>
+                <span class="stat-label">SATISFACTION RATE</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">SUPPORT ONLINE</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+        <div class="section-header">
+            <h2 class="section-title">GET IN TOUCH</h2>
+            <p class="section-subtitle">Ready to transform your business? Let's start the conversation</p>
+        </div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">FULL NAME</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">COMPANY</label>
+                    <input type="text" id="company" name="company">
                 </div>
             </div>
-            <div class="about-image">
-                <svg viewBox="0 0 400 400" style="width: 100%; max-width: 400px;">
-                    <circle cx="200" cy="200" r="150" fill="#667eea" opacity="0.2"/>
-                    <circle cx="200" cy="200" r="120" fill="#764ba2" opacity="0.3"/>
-                    <circle cx="200" cy="200" r="90" fill="#667eea" opacity="0.4"/>
-                    <text x="200" y="210" text-anchor="middle" fill="#fff" font-size="60" font-weight="bold">OG</text>
-                </svg>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <h2 class="section-title">Get In Touch</h2>
-        <form class="contact-form" onsubmit="handleSubmit(event)">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">EMAIL ADDRESS</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">PHONE NUMBER</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
             </div>
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+                <label for="service">SERVICE INTERESTED IN</label>
+                <select id="service" name="service" required>
+                    <option value="">Select a service</option>
+                    <option value="pos">POS Systems</option>
+                    <option value="content">Content Creation</option>
+                    <option value="design">Post Designing</option>
+                    <option value="marketing">Digital Marketing</option>
+                    <option value="all">All Services</option>
+                </select>
             </div>
             <div class="form-group">
-                <label for="service">Service Interested In</label>
-                <input type="text" id="service" name="service" placeholder="POS, Content Creation, etc.">
-            </div>
-            <div class="form-group">
-                <label for="message">Message</label>
+                <label for="message">MESSAGE</label>
                 <textarea id="message" name="message" required></textarea>
             </div>
-            <button type="submit" class="submit-btn">Send Message</button>
+            <button type="submit" class="submit-btn">SEND MESSAGE</button>
         </form>
     </section>
 
     <footer>
-        <p>&copy; 2024 Orion Global. All rights reserved. | Transforming Businesses Digitally</p>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#features">Features</a>
+                <a href="#stats">Stats</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p class="copyright">© 2024 ORION GLOBAL. ALL RIGHTS RESERVED. | ENGINEERED FOR THE FUTURE</p>
+        </div>
     </footer>
 
     <script>
@@ -443,7 +759,10 @@
 
         function handleSubmit(e) {
             e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon.');
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            console.log('Form submitted:', data);
+            alert('MESSAGE TRANSMITTED SUCCESSFULLY! We will contact you within 24 hours.');
             e.target.reset();
         }
 
@@ -465,10 +784,31 @@
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
-                header.style.background = 'linear-gradient(135deg, #5568d3 0%, #6a3f8f 100%)';
+                header.style.boxShadow = '0 4px 30px rgba(0, 240, 255, 0.2)';
             } else {
-                header.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                header.style.boxShadow = '0 4px 30px rgba(0, 240, 255, 0.1)';
             }
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .feature-box, .stat-box').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
         });
     </script>
 </body>
